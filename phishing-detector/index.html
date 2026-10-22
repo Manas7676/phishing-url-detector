@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phishing URL Detection System</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div><div class="brand">NSC / Cybersecurity Lab</div><h1>Phishing URL Detection System</h1><div class="mu">Interactive URL Threat Analysis</div></div>
+<div class="hr"><span id="status" class="pill">Ready</span><button id="reset" class="ghost">Reset Simulation</button></div></header>
+<main>
+<section class="card c7"><h2>URL Analysis Console</h2>
+<div class="row"><input id="url" placeholder="https://www.example.com/path" autocomplete="off" spellcheck="false"><button id="analyze">Analyze URL</button><button id="clear" class="ghost">Clear</button></div>
+<div id="msg" class="msg" role="alert"></div>
+<div class="row sm"><span class="mu">Samples (reserved test domains, never opened):</span><span id="samples" class="row"></span></div>
+<div class="row sm"><label>Mode <select id="mode"><option value="auto">Run All Stages</option><option value="step">Step-by-Step</option></select></label>
+<label>Demo delay (ms) <input id="delay" type="number" value="700" min="0" max="3000" step="100"></label>
+<button id="next" class="ghost" disabled>Next Step</button><button id="clrlog" class="ghost">Clear Logs</button></div></section>
+<section class="card c5"><h2>Detection Result</h2>
+<div class="res"><div id="score" class="score">--</div><div><div id="cls" class="pill">Not analyzed</div><div class="mu" id="sig">Signals: -</div><div class="mu" id="dur">Duration: -</div></div></div>
+<div class="meter"><i id="fill"></i></div><div class="mu sm">Thresholds: Low Risk &lt; 25 · Suspicious 25–49 · High Risk ≥ 50</div>
+<p id="expl" class="expl">Enter a URL and click Analyze URL.</p>
+<p class="note">This score is a heuristic estimate, not a probability. A low score never guarantees a URL is safe.</p></section>
+<section class="card c7"><h2>Detection Process</h2><div class="prog"><i id="prog"></i></div><ol id="stages"></ol></section>
+<section class="card c5"><h2>Live System Log</h2><div id="log" class="log"></div></section>
+<section class="card c12"><h2>Extracted URL Features</h2><div class="scroll"><table><thead><tr><th>Feature</th><th>Value</th><th>Status</th><th>Explanation</th></tr></thead><tbody id="feat"><tr><td colspan="4" class="mu">Appears during Stage 2.</td></tr></tbody></table></div></section>
+<section class="card c12"><h2>Why Was This URL Flagged?</h2><div id="why" class="mu">Evidence appears after Stage 5. Only signals actually detected are listed.</div></section>
+<section class="card c12"><h2>Scan History <small class="mu">(stored in this browser only)</small></h2>
+<div class="stats"><span>Total: <b id="s1">0</b></span><span>Flagged: <b id="s2">0</b></span><span>Low risk: <b id="s3">0</b></span><span>Latest: <b id="s4">-</b></span><button id="clrhist" class="ghost">Clear History</button></div>
+<div class="scroll"><table><thead><tr><th>Time</th><th>URL</th><th>Class</th><th>Score</th><th>Signals</th><th></th></tr></thead><tbody id="hist"></tbody></table></div></section>
+</main><script src="detector.js"></script><script src="app.js"></script></body></html>
